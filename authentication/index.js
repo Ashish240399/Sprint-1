@@ -1,0 +1,11 @@
+const express=require("express");
+const app=express();
+app.use(express.json());
+const userController=require("./controller/user");
+const productController=require("./controller/product");
+const {register,login}=require("./controller/auth");
+app.use("/users",userController);
+app.post("/register",register);
+app.post("/login",login);
+app.use("/products",productController);
+module.exports=app;
